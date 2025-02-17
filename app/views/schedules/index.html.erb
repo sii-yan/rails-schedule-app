@@ -1,35 +1,83 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="mb-5 TitleWrapper">
+    <h3 class="PageTitle">スケジュール一覧</h3>
+    <%= link_to '新規追加', new_schedule_path, class: "btn Button Button--primary" %>
+  </div>
 
-<h1>Schedules</h1>
+  <% if @schedules.present? %>
+    <table class="table table-hover Table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>タイトル</th>
+          <th>開始日</th>
+          <th>終了日</th>
+          <th>終日</th>
+          <th>更新日時</th>
+          <th></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>All day</th>
-      <th>Memo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <tbody>
+        <% @schedules.each do |schedule| %>
+          <tr data-href="<%= schedule_path(schedule) %>">
+            <td><%= schedule.id %></td>
+            <td><%= schedule.title %></td>
+            <td><%= schedule.start_date.strftime("%Y/%m/%d") %></td>
+            <td><%= schedule.end_date.strftime("%Y/%m/%d") %></td>
+            <td><%= schedule.all_day ? "○" : "" %></td>
+            <td><%= schedule.updated_at.strftime("%Y/%m/%d %H:%M") %></td>
+            <td>
+              <div class="dropdown">
+                <button
+                  class="btn p-0 border-0 bg-transparent "
+                  type="button"
+                  id="menu-<%= schedule.id %>"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-three-dots"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"
+                    />
+                  </svg>
+                </button>
+                <ul
+                  class="dropdown-menu dropdown-menu-end DropdownMenu"
+                  aria-labelledby="menu-<%= schedule.id %>"
+                >
+                  <li>
+                    <%= link_to "詳細", schedule, class: "dropdown-item DropdownItem" %>
+                  </li>
+                  <li>
+                    <%= link_to "編集", edit_schedule_path(schedule), class: "dropdown-item DropdownItem" %>
+                  </li>
+                  <li>
+                    <%= link_to "削除", schedule, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "dropdown-item DropdownItem" %>
+                  </li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+  <p>スケジュールがありません</p>
+  <% end %>
 
-  <tbody>
-    <% @schedules.each do |schedule| %>
-      <tr>
-        <td><%= schedule.title %></td>
-        <td><%= schedule.start_date %></td>
-        <td><%= schedule.end_date %></td>
-        <td><%= schedule.all_day %></td>
-        <td><%= schedule.memo %></td>
-        <td><%= link_to 'Show', schedule %></td>
-        <td><%= link_to 'Edit', edit_schedule_path(schedule) %></td>
-        <td><%= link_to 'Destroy', schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <footer class="card Footer">
+    <div class="card-body FooterBody">
+      <p class="FooterBody__count">予定合計：<span><%= @schedules.count %></span>件</p>
+      <p class="FooterBody__datetime">本日の日付：<%= Date.today.strftime('%Y/%m/%d') %></p>
+    </div>
+  </footer>
+</div>
 
-<br>
-
-<%= link_to 'New Schedule', new_schedule_path %>
