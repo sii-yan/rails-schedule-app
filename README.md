@@ -1,24 +1,32 @@
-# README
+## アプリ名
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+スケジュール管理アプリ
 
-Things you may want to cover:
+## アプリ概要
 
-* Ruby version
+Rails（v6.1.3.2）で作成したスケジュール管理アプリです。予定の作成・閲覧・編集・削除ができるCRUD機能を実装しています。
 
-* System dependencies
+### 主な機能
 
-* Configuration
+- スケジュールのCRUD機能
+- 各種バリデーション  
+  - タイトル（必須・20文字以内）  
+  - 開始日・終了日（必須、終了日は開始日以降）  
+  - メモ（500文字以内）
+- ページ構成  
+  - 予定一覧、新規作成、詳細、編集
+- 一覧ページ機能  
+  - 予定データの表示（ID、タイトル、日付、終日、更新日時）  
+  - 詳細・編集ページリンク、削除リンク（確認モーダルあり）  
+  - 予定合計数、本日の日付を表示
+- 詳細ページ機能  
+  - スケジュール詳細情報の表示  
+  - 一覧・編集ページリンク
+- 日時表示はすべて日本時間（JST）
+- 成功/失敗時のフラッシュメッセージ表示あり
 
-* Database creation
+### 使用技術
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Ruby on Rails 6.1.3.2
+- SQLite3
+- Bootstrap（任意）
