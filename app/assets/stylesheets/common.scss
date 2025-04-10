@@ -1,0 +1,253 @@
+@charset "UTF-8";
+
+:root {
+  /* 色管理用の変数 */
+  --white-color: #fff;
+  --black-color: #1a1a1a;
+  --gray-color: #ededed;
+  --gray-color02: #a2a2a4;
+  --gray-color03: #464646;
+  --gray-color04: #707070;
+  --primary-color: #10AA98;
+  --accent-color: #10786C;
+}
+
+body {
+  font-family: Inter, "Noto Sans JP", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--white-color);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--black-color);
+}
+
+a {
+  color: var(--black-color);
+  text-decoration: none
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+table {
+  text-align: center;
+}
+
+label, p {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+label {
+font-weight: 700;
+}
+
+input {
+  height: 45px;
+}
+
+input, textarea {
+  border-color: var(--gray-color);
+  border-radius: 4px;
+  font-size: 14px !important;
+}
+
+textarea {
+  height: 124px;
+}
+
+.Header {
+  background-color: var(--white-color);
+  height: 50px;
+  border-bottom: 1px solid var(--gray-color);
+}
+
+.HeaderLogo {
+  color: var(--black-color);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.TitleWrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.PageTitle {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+// Button
+.Button {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  height: 45px;
+  border-radius: 6px;
+  padding: 12px 20px;
+}
+
+.Button--primary {
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+.Button--secondary {
+  background-color: var(--white-color);
+  border-color: var(--gray-color02);
+  color: var(--black-color);
+}
+
+// Link
+.Link {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.Link--with-icon {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  width: fit-content;
+  gap: 6px
+}
+
+// Table
+
+.Table {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 0;
+}
+
+.Table th, td {
+  word-break: keep-all;
+}
+
+.Table th {
+  border-color: var(--gray-color) !important;
+  padding: 10px 16px;
+}
+
+.Table td {
+  padding: 20px 16px;
+}
+
+.DetailTable {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 0;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+}
+
+.DetailTable th, td {
+  padding: 20px 16px;
+  word-break: keep-all;
+}
+
+// Form
+.Form__label--required::after {
+  content: "*";
+  color: #ff4949;
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.Form__check-input {
+  border: 2px solid #a2a2a4;
+  margin-left: -1em !important;
+  height: 18px;
+  width: 18px;
+}
+
+.Form__check-label {
+  font-weight: 400;
+}
+
+.Footer {
+  border: none;
+}
+
+.FooterBody {
+  align-items: baseline;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.FooterBody__count {
+  font-size: 14px;
+}
+
+.FooterBody__count > span {
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.FooterBody__datetime {
+  color: var(--gray-color02);
+  font-size: 14px;
+  line-height: 18px;
+}
+
+// Form
+.FormWrapper {
+  height: fit-content;
+  margin: auto;
+  width: 640px;
+}
+
+
+@media screen and (max-width: 1280px) {
+  .FormWrapper {
+    max-width: 640px;
+    width: 100%;
+  }
+}
+
+.Form__label--required::after {
+  content: "*";
+  color: #ff4949;
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.Form__check-input {
+  border: 2px solid var(--gray-color02);
+  margin-right: 12px;
+  margin-left: -1em !important;
+  height: 18px;
+  width: 18px;
+}
+
+.Form__check-label {
+  font-weight: 400;
+}
+
+.Form_check {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 0;
+}
+
+.FormContainer__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.DropdownItem {
+  font-size: 14px;
+  color: var(--gray-color03);
+}
